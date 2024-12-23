@@ -1,0 +1,30 @@
+create database Marine_Fish;
+use Marine_Fish;
+
+select * from Marine_fish;
+
+/*Show the sum of Average_Size for Breeding season Summer 
+Show the average of water temperature from 19 to 25 
+For the no over fishing tank show the data for the Fish population 
+Show the water pollution high for species name that are affected 
+if the fish population is less than 7000 then show the text less population of fish */
+
+-- Show the sum of Average_Size for Breeding season Summer
+select sum(Average_size),Breeding_season
+from Marine_fish
+group by Breeding_season;
+-- Show the average of water temperature from 19 to 25 
+select round(avg(Water_temperature))
+from Marine_fish
+where Water_Temperature between 19 and 25;
+-- For no over fishing risk show the data for the Fish population
+select Overfishing_risk,Fish_population
+from marine_fish
+where OverFishing_risk= "No";
+-- Show the water pollution high for species name that are affected
+select Water_Pollution,Species_Name
+from marine_fish
+where Water_pollution= "High";
+-- if the fish population is less than 7000 then show the text less population of fish
+select Species_Name,if(Fish_population< 7000,"Less Population of fish","Huge Population of fish")
+from Marine_Fish;
